@@ -1,0 +1,42 @@
+ROSTemplateFormatVersion: '2015-09-01'
+Transform: 'Aliyun::Serverless-2018-04-03'
+Resources:
+  gpt-template:
+    Type: 'Aliyun::Serverless::Service'
+    Properties:
+      Description: This is FC service
+    gpt-template:
+      Type: 'Aliyun::Serverless::Function'
+      Properties:
+        Handler: index.handler
+        Runtime: custom
+        CodeUri: >-
+          oss://fun-gen-cn-hongkong-1489475297758012/3b5bceb1f1eab9d1212ca09c99838838
+        MemorySize: 1024
+        InstanceConcurrency: 5
+        Timeout: 120
+      Events:
+        httpTrigger:
+          Type: HTTP
+          Properties:
+            AuthType: ANONYMOUS
+            Methods:
+              - GET
+              - POST
+              - PUT
+  Domain:
+    Type: 'Aliyun::Serverless::CustomDomain'
+    Properties:
+      DomainName: Auto
+      Protocol: HTTP
+      RouteConfig:
+        Routes:
+          /*:
+            ServiceName:
+              'Fn::GetAtt':
+                - gpt-template
+                - ServiceName
+            FunctionName:
+              'Fn::GetAtt':
+                - gpt-templategpt-template
+                - FunctionName
