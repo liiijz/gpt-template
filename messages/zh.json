@@ -1,10 +1,10 @@
 {
   "Index": {
-    "title": "PPT生成器",
+    "title": "论文助手",
     "switchLocale": "",
     "deployWiki": "部署自己的网站？",
-    "description1": "简单描述PPT内容 ",
-    "description2": "帮你生成PPT大纲",
+    "description1": "简单描述论文主题 ",
+    "description2": "帮你生成论文",
     "slogan": "一写PPT就头大？我来帮你！",
     "step0": "粘贴你的 OpenAI API Key (新手可善用搜索引擎自行购买)",
     "openaiApiKeyPlaceholder": "sk-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
