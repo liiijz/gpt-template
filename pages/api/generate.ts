@@ -1,5 +1,6 @@
 import { OpenAIStream, OpenAIStreamPayload } from "../../utils/OpenAIStream";
 
+console.log(process.env.OPENAI_API_KEY)
 if (process.env.NEXT_PUBLIC_USE_USER_KEY !== "true") {
   if (!process.env.OPENAI_API_KEY) {
     throw new Error("Missing env var from OpenAI");
