@@ -17,11 +17,10 @@ const handler = async (req: Request): Promise<Response> => {
     api_key?: string
   };
   //todo make this variable into messages
-  var p = "请帮我把以下的工作内容填充为一篇完整的周报,尽量避免在回答内容中出现可能在中国是敏感的内容，用markdown格式以分点叙述的形式输出:"
-  prompt = p + prompt
   if (!prompt) {
     return new Response("No prompt in the request", { status: 400 });
   }
+  var content = "你是一位资深小红书运营人员，你目前负责的内容方向是撰写小红书文案，你的任务是生成小红书的内容文案。要求分解长句，减少重复，语气轻松幽默具有整体可读性。你现在要编写的文案主题是" + prompt + "尽量避免在回答内容中出现可能在中国是敏感的内容"
 
   // if (!process.env.OPENAI_MODEL) {
   //   throw new Error("Missing env var from OpenAI")
@@ -29,7 +28,7 @@ const handler = async (req: Request): Promise<Response> => {
 
   const payload: OpenAIStreamPayload = {
     model: "gpt-3.5-turbo-0613",
-    messages: [{ role: "user", content: prompt }],
+    messages: [{ role: "user", content: content }],
     temperature: 0.7,
     top_p: 1,
     frequency_penalty: 0,
