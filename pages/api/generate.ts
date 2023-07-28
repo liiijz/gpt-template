@@ -20,7 +20,7 @@ const handler = async (req: Request): Promise<Response> => {
   if (!prompt) {
     return new Response("No prompt in the request", { status: 400 });
   }
-  var content = "你是一位资深小红书运营人员，你目前负责的内容方向是撰写小红书文案，你的任务是生成小红书的内容文案。要求分解长句，减少重复，语气轻松幽默具有整体可读性。你现在要编写的文案主题是" + prompt
+  var content = "你是一位资深小红书运营人员，你目前负责的内容方向是撰写小红书文案，你的任务是生成小红书的内容文案。要求分解长句，减少重复，语气轻松幽默具有整体可读性，小红书的风格是抓人眼球的标题，每段段首带emoji，结尾带tag。你现在要编写的文案主题是" + prompt
 
   // if (!process.env.OPENAI_MODEL) {
   //   throw new Error("Missing env var from OpenAI")
